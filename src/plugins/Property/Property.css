@@ -1,0 +1,71 @@
+@charset "utf-8";
+
+/* usually-list start */
+.usually-list-wrap {
+  margin: 40px 0;
+}
+.usually-list-title {
+  display: flex;
+  height: 24px;
+  line-height: 24px;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+.usually-list-title div {
+  background-color: #ff6600;
+  height: 100%;
+  width: 6px;
+  margin-right: 6px;
+}
+.usually-list-description {
+  font-size: 14px;
+  padding: 0 30px;
+}
+/* usually-list end */
+
+/* usually-table start */
+.usually-table-wrap {
+  width: 100%;
+  font-size: 14px;
+  line-height: 21px;
+  color: #333333;
+  text-align: center;
+}
+.usually-table-header,
+.usually-table-footer {
+  padding: 14px 20px;
+}
+.usually-table-header {
+  background-color: #f6f6f6;
+}
+.usually-table-footer {
+  background-color: #ededed;
+}
+.usually-table-content :nth-child(2n-1) {
+  background-color:rgba(237,237,237,0.5);
+}
+.usually-table-content :nth-child(2n) {
+  background-color:rgba(200,200,200,0.5);
+}
+.usually-table-item {
+  display: flex;
+}
+.usually-table-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ededed;
+}
+.usually-table-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #dadada;
+}
+
+.usually-table-left, .usually-table-right {
+  padding: 14px 20px;
+  width: 50%;
+}
+/* usually-table end */

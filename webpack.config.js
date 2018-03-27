@@ -8,12 +8,10 @@ var DIST_PATH = path.resolve(ROOT_PATH, 'dist');
 var loaders = [
     {loader: 'css-loader'},
     {loader: 'autoprefixer-loader'},
-		{loader: 'sass-loader'}
+	{loader: 'sass-loader'}
 ];
 var config = {
-	entry: {
-		main: SRC_PATH
-	},
+	entry: { main: SRC_PATH },
 	output: {
     path: DIST_PATH,
 		publicPath: '/',
@@ -31,20 +29,18 @@ var config = {
 				use: ['url-loader?limit=8192&name=img/[name][hash:8].[ext]','image-webpack-loader']
 			},
 			{
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        include: SRC_PATH,
-        options: {
-            presets: ["env"]
-          }
+				test: /\.(js|jsx)$/,
+				exclude: /node_modules/,
+				loader: 'babel-loader',
+				include: SRC_PATH,
+				options: { presets: ["env"] }
 		    }
 		]
 	},
 	
 	devServer: {
 	    historyApiFallback: true,
-	    contentBase: DIST_PATH,
+	    contentBase: "./",
 	    stats: 'errors-only',
 	    hot: true,
 	    inline: true
@@ -52,9 +48,9 @@ var config = {
   
 	plugins: [
 	    new HtmlwebpackPlugin({
-	      title: 'titile',
+	      title: 'title',
 	      filename: 'index.html',
-	      template: './src/template/index.ejs',
+	      template: './src/Template/index.ejs',
 	      favicon: ""
 	    }),
 	    new ExtractTextPlugin("css/[name].min.css"),
