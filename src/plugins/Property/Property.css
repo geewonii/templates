@@ -69,3 +69,45 @@
   width: 50%;
 }
 /* usually-table end */
+
+/* nomal-table start */
+.nomal-table-wrap {
+  width: 100%;
+  font-size: 14px;
+  line-height: 21px;
+  color: #333333;
+  text-align: center;
+  box-sizing: border-box;
+  border: 1px solid #c1c1c1;
+  border-bottom: none;
+}
+.nomal-table-header,
+.nomal-table-footer {
+  padding: 14px 20px;
+  border-bottom: 1px solid #c1c1c1;
+}
+.nomal-table-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+.nomal-table-item {
+  display: flex;
+  box-sizing: border-box;
+  width: 50%;
+  border-bottom: 1px solid #c1c1c1;
+}
+.nomal-table-item:nth-of-type(2n-1) {
+  border-right: 1px solid #c1c1c1;
+}
+.nomal-table-left {
+  border-right: 1px solid #c1c1c1;
+}
+.nomal-table-left,
+.nomal-table-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 20px;
+  width: 50%;
+}
+/* nomal-table end */

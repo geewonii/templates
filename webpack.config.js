@@ -7,7 +7,13 @@ var SRC_PATH = path.resolve(ROOT_PATH, 'src');
 var DIST_PATH = path.resolve(ROOT_PATH, 'dist');
 var loaders = [
     {loader: 'css-loader'},
-    {loader: 'autoprefixer-loader'},
+    {
+		loader: 'postcss-loader',
+		options: {
+			sourceMap: true,
+			config: { path: 'postcss.config.js' }
+		}
+	},
 	{loader: 'sass-loader'}
 ];
 var config = {

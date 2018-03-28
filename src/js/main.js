@@ -4,7 +4,6 @@ import "../plugins/Property/Property.css";
 export default function() {
   this.init = function () {
     const body = document.querySelector("body");
-
     const usuallyTable = {
       header: '丰利金服工商信息',
       children: [
@@ -87,14 +86,33 @@ export default function() {
         }
       ]
     };
+    const nomalTable = {
+      header: '丰利金服工商信息',
+      children: [
+        {
+          id: 1,
+          title: '公司全称',
+          content: '广州杰莱互联网金融信息服务有限公司'
+        }, {
+          id: 2,
+          title: '公司简称',
+          content: '丰利金服'
+        }, {
+          id: 3,
+          title: '统一社会信用代码',
+          content: '91440101321070552W'
+        }
+      ],
+      footer: '丰利金服工商信息',
+    };
     const usuallyList = {
       title: '标题',
       description: '借款人征信情况：经查询个人征信记录显示，陈先生征信显示名下无贷款，贷记卡账户数为3张，授信总额为12,000元，近6个月平均使用额度为11,769元，近两年有逾期记录，但逾期金额较小且客户及时还清，综合考 评，征信状况一般。',
     }
     const dataSource = [
       {usuallyList},
+      {nomalTable},
       {usuallyTable},
-      {usuallyList},
     ]
 
     const property = new Property("#page", { dataSource });

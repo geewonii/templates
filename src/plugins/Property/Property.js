@@ -3,7 +3,7 @@
  */
 export default class Property {
   constructor(selector, options) {
-    if (!(this instanceof Property)) return new Property(selector,options);
+    if (!(this instanceof Property)) return new Property(selector, options);
     this.options = this.extend(config, options);
     if ((typeof selector) === "string") {
       this.selector = document.querySelector(selector);
@@ -14,7 +14,7 @@ export default class Property {
   }
   init() {
     this.data = (typeof this.options.dataSource === 'string' ? JSON.parse(this.options.dataSource) : this.options.dataSource ) || {};
-    this.domCreate();
+    this.matchKeys();
   }
   extend(obj, obj2) {
     for(let k in obj2) {
@@ -22,7 +22,7 @@ export default class Property {
     }
     return obj;
   }
-  domCreate() {
+  matchKeys() {
     const createArr = this.data.map(keys => keys);
     createArr.forEach(obj => {
       for (let key in obj){
@@ -77,6 +77,39 @@ export default class Property {
     });
     this.appendChilds(elementArr, 'usually-table');
   }
+  nomalTable(obj) {
+    const { nomalTable } = obj;
+    const elementArr = Object.keys(nomalTable).map(todo => {
+      if (todo === 'header') {
+        return `<div class="nomal-table-header">${nomalTable[todo]}</div>`;
+      } else if (todo === 'footer') {
+        return `<div class="nomal-table-footer">${nomalTable[todo]}</div>`;
+      } else {
+        let childrenStr = '';
+        if (Array.isArray(nomalTable[todo])) {
+          nomalTable[todo].forEach(item => {
+            const str = `
+              <div class="nomal-table-item">
+                <div class="nomal-table-left">${item.title}</div>
+                <div class="nomal-table-right">${item.content}</div>
+              </div>
+            `;
+            childrenStr += str;
+          });
+          nomalTable[todo].length % 2 === 1 && (
+            childrenStr += `
+            <div class="nomal-table-item">
+              <div class="nomal-table-left"></div>
+              <div class="nomal-table-right"></div>
+            </div>
+          `
+          );
+        }
+        return `<div class="nomal-table-content">${childrenStr}</div>`;
+      }
+    });
+    this.appendChilds(elementArr, 'nomal-table');
+  }
 
   appendChilds(elements, name) {
     const warp = document.createElement('div');
@@ -88,6 +121,6 @@ export default class Property {
   }
 }
 const config = {
-  data: {},
+  dataSource: {},
   theme: '#60',
 }
