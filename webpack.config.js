@@ -46,10 +46,12 @@ var config = {
 	
 	devServer: {
 	    historyApiFallback: true,
-	    contentBase: "./",
+	    contentBase: DIST_PATH,
 	    stats: 'errors-only',
 	    hot: true,
-	    inline: true
+		inline: true,
+		overlay: true,
+		compress: true
 	},
   
 	plugins: [

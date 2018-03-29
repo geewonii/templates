@@ -2,7 +2,7 @@
  * Property 0.0.2
  */
 export default class Property {
-  constructor(selector, options) {
+  constructor(selector, dataSource , options) {
     if (!(this instanceof Property)) return new Property(selector, options);
     this.options = this.extend(config, options);
     if ((typeof selector) === "string") {
@@ -10,10 +10,10 @@ export default class Property {
     } else {
       this.selector = selector;
     }
-    this.init();
+    this.init(dataSource);
   }
-  init() {
-    this.data = (typeof this.options.dataSource === 'string' ? JSON.parse(this.options.dataSource) : this.options.dataSource ) || {};
+  init(dataSource) {
+    this.dataSource = (typeof dataSource === 'string' ? JSON.parse(dataSource) : dataSource ) || {};
     this.matchKeys();
   }
   extend(obj, obj2) {
@@ -23,7 +23,7 @@ export default class Property {
     return obj;
   }
   matchKeys() {
-    const createArr = this.data.map(keys => keys);
+    const createArr = this.dataSource.map(keys => keys);
     createArr.forEach(obj => {
       for (let key in obj){
         switch (key) {
@@ -35,6 +35,9 @@ export default class Property {
             break
           case 'nomalTable':
             this.nomalTable(obj);
+            break
+          case 'pinkTable':
+            this.pinkTable(obj);
             break
         }
       }
@@ -110,6 +113,47 @@ export default class Property {
     });
     this.appendChilds(elementArr, 'nomal-table');
   }
+  pinkTable(obj) {
+    const { pinkTable } = obj;
+    const elementArr = Object.keys(pinkTable).map(todo => {
+      if (todo === 'header') {
+        return `<div class="pink-table-header">${pinkTable[todo]}</div>`;
+      } else if (todo === 'footer') {
+        return `<div class="pink-table-footer">${pinkTable[todo]}</div>`;
+      } else {
+        let childrenStr = '';
+        if (Array.isArray(pinkTable[todo])) {
+          pinkTable[todo].forEach((item, i) => {
+            if (i % 2 === 0) {
+              childrenStr +=
+                `<div class="pink-table-ros">
+                  <div class="pink-table-item">
+                    <div class="pink-table-left">${item.title}</div>
+                    <div class="pink-table-right">${item.content}</div>
+                  </div>
+                `;
+            } else {
+              childrenStr += `
+                <div class="pink-table-item">
+                  <div class="pink-table-left">${item.title}</div>
+                  <div class="pink-table-right">${item.content}</div>
+                </div>
+              </div>`
+            }
+          });
+          pinkTable[todo].length % 2 === 1 && (
+            childrenStr += `
+            <div class="pink-table-item">
+              <div class="pink-table-left"></div>
+              <div class="pink-table-right"></div>
+            </div>`
+          );
+        }
+        return `<div class="pink-table-content">${childrenStr}</div>`;
+      }
+    });
+    this.appendChilds(elementArr, 'pink-table');
+  }
 
   appendChilds(elements, name) {
     const warp = document.createElement('div');
@@ -121,6 +165,5 @@ export default class Property {
   }
 }
 const config = {
-  dataSource: {},
   theme: '#60',
 }

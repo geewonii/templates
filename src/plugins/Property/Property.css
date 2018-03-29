@@ -1,4 +1,37 @@
 @charset "utf-8";
+/* common start */
+.usually-table-header,
+.usually-table-footer,
+.nomal-table-header,
+.nomal-table-footer,
+.pink-table-header,
+.pink-table-footer {
+  padding: 14px 20px;
+}
+
+.usually-table-wrap,
+.nomal-table-wrap,
+.pink-table-wrap {
+  font-size: 14px;
+  line-height: 21px;
+  color: #333333;
+  text-align: center;
+  margin: 0 30px;
+  box-sizing: border-box;
+}
+
+.usually-table-left,
+.usually-table-right,
+.nomal-table-left,
+.nomal-table-right,
+.pink-table-left,
+.pink-table-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* common end */
 
 /* usually-list start */
 .usually-list-wrap {
@@ -25,17 +58,7 @@
 /* usually-list end */
 
 /* usually-table start */
-.usually-table-wrap {
-  width: 100%;
-  font-size: 14px;
-  line-height: 21px;
-  color: #333333;
-  text-align: center;
-}
-.usually-table-header,
-.usually-table-footer {
-  padding: 14px 20px;
-}
+
 .usually-table-header {
   background-color: #f6f6f6;
 }
@@ -52,15 +75,9 @@
   display: flex;
 }
 .usually-table-left {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: #ededed;
 }
 .usually-table-right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: #dadada;
 }
 
@@ -72,18 +89,12 @@
 
 /* nomal-table start */
 .nomal-table-wrap {
-  width: 100%;
-  font-size: 14px;
-  line-height: 21px;
-  color: #333333;
-  text-align: center;
   box-sizing: border-box;
   border: 1px solid #c1c1c1;
   border-bottom: none;
 }
 .nomal-table-header,
 .nomal-table-footer {
-  padding: 14px 20px;
   border-bottom: 1px solid #c1c1c1;
 }
 .nomal-table-content {
@@ -104,10 +115,38 @@
 }
 .nomal-table-left,
 .nomal-table-right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 14px 20px;
   width: 50%;
 }
 /* nomal-table end */
+
+/* pink-table start */
+
+.pink-table-ros {
+  display: flex;
+  flex-wrap: wrap;
+}
+.pink-table-ros:nth-child(2n-1) .pink-table-item:first-child {
+  background-color: #ebdddd;
+}
+.pink-table-ros:nth-child(2n-1) .pink-table-item:last-child {
+  background-color: #e8e2ec;
+}
+
+.pink-table-item {
+  display: flex;
+  width: 50%;
+}
+.pink-table-item:nth-child(2n-1) {
+  background-color: #fceded;
+}
+.pink-table-item:nth-child(2n) {
+  background-color: #f9f2fd;
+}
+
+.pink-table-left,
+.pink-table-right {
+  padding: 14px 20px;
+  width: 50%;
+}
+/* pink-table end */
